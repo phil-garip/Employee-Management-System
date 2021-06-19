@@ -14,7 +14,6 @@ module.exports = {
 			"View Employees by Department", // viewEmployeeByDepartment();
 			"View Departments", // viewDepartments();
 			"View Roles", // viewRoles();
-			"View Department Budget", // viewDepartmentBudget();
 			/* === || ADD || === */
 			"Add Employee", // addEmployee();
 			"Add Department", // addDepartment();
