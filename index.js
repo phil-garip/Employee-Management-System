@@ -49,9 +49,6 @@ function firstPrompt() {
 			case "View Roles":
 				viewRoles();
 				break;
-			case "View Department Budget":
-				viewDepartmentBudget();
-				break;
 			case "Add Employee":
 				addEmployee();
 				break;
@@ -219,28 +216,6 @@ function viewRoles() {
 		res.forEach((role) => {
 			console.log(
 				`ID: ${role.id} | Title: ${role.title}\n Salary: ${role.salary}\n`,
-			);
-		});
-		firstPrompt();
-	});
-}
-
-// VIEW DEPT BUDGET
-function viewDepartmentBudget() {
-	var query = `SELECT d.name, 
-		r.salary, sum(r.salary) AS budget
-		FROM employee e 
-		LEFT JOIN role r ON e.role_id = r.id
-		LEFT JOIN department d ON r.department_id = d.id
-		group by d.name`;
-
-	connection.query(query, function (err, res) {
-		if (err) throw err;
-
-		console.log(`\nDEPARTMENT BUDGETS:\n`);
-		res.forEach((department) => {
-			console.log(
-				`Department: ${department.name}\n Budget: ${department.budget}\n`,
 			);
 		});
 		firstPrompt();
