@@ -78,7 +78,7 @@ function firstPrompt() {
 				break;
 			case "Exit":
 				console.log(
-					`\n“Goodbye, Vietnam! That’s right, I’m history, I’m outta here, I got the lucky ticket home, baby."\n- Robin Williams`,
+					`\n“Goodbye!`,
 				);
 				connection.end();
 				break;
