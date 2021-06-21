@@ -5,11 +5,7 @@
 - [Installation](#installation)
 - [Instructions](#instructions)
 - [Features](#features)
-- [Example Gif](#example-gif)
-- [Repository Link](#Repository)
 - [Test](#Test)
-- [Licence](#Licence)
-- [GitHub Info](#GitHub)
 
 ## Installation
 
@@ -45,27 +41,3 @@
 - Remove Department
 - Remove Role
 
-## Repository
-
-![GitHub repo size](https://img.shields.io/github/repo-size/WasteOfADrumBum/MySQL-Employee-Tracker?logo=github)
-
-![GitHub Commit Activity](https://img.shields.io/github/commit-activity/m/WasteOfADrumBum/MySQL-Employee-Tracker)
-![GitHub Last Commit](https://img.shields.io/github/last-commit/WasteOfADrumBum/MySQL-Employee-Tracker)
-
-![GitHub contributors](https://img.shields.io/github/contributors/WasteOfADrumBum/MySQL-Employee-Tracker)
-![GitHub Forks](https://img.shields.io/github/forks/WasteOfADrumBum/MySQL-Employee-Tracker?label=Fork)
-![GitHub Watchers](https://img.shields.io/github/watchers/WasteOfADrumBum/MySQL-Employee-Tracker?label=Watch)
-
-![GitHubopen pull request](https://img.shields.io/github/issues-pr/WasteOfADrumBum/MySQL-Employee-Tracker)
-![GitHub closed pull request](https://img.shields.io/github/issues-pr-closed/WasteOfADrumBum/MySQL-Employee-Tracker)
-
-![GitHub Stars](https://img.shields.io/github/stars/WasteOfADrumBum/MySQL-Employee-Tracker?style=social)
-
-- [Project Repo](https://github.com/WasteOfADrumBum/MySQL-Employee-Tracker)
-
-## Test
-
-![GitHub test](https://img.shields.io/badge/test-100%25-success)
-
-![GitHub open issues](https://img.shields.io/github/issues/WasteOfADrumBum/MySQL-Employee-Tracker)
-![GitHub closed issues](https://img.shields.io/github/issues-closed/WasteOfADrumBum/MySQL-Employee-Tracker)
