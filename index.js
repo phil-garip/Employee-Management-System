@@ -96,4 +96,128 @@ function viewDepartments() {
 	firstPrompt();
 }
 
+// Add employee
+function addEmployee() {
+	console.log("Inserting an employee!")
+  
+	var query =
+	  `SELECT r.id, r.title, r.salary 
+		FROM role r`
+  
+	connection.query(query, function (err, res) {
+	  if (err) throw err;
+  
+	  const roleChoices = res.map(({ id, title, salary }) => ({
+		value: id, title: `${title}`, salary: `${salary}`
+	  }));
+  
+	  console.table(res);
+	  console.log("RoleToInsert!");
+  
+	  promptInsert(roleChoices);
+	});
+  }
+  
+  function promptInsert(roleChoices) {
+  
+	inquirer
+	  .prompt([
+		{
+		  type: "input",
+		  name: "first_name",
+		  message: "What is the employee's first name?"
+		},
+		{
+		  type: "input",
+		  name: "last_name",
+		  message: "What is the employee's last name?"
+		},
+		{
+		  type: "list",
+		  name: "roleId",
+		  message: "What is the employee's role?",
+		  choices: roleChoices
+		},
+	  ])
+	  .then(function (answers) {
+		console.log(answers);
+  
+		let query = `INSERT INTO employee SET ?`
+		// when finished prompting, insert a new item into the db with that info
+		connection.query(query,
+		  {
+			first_name: answers.first_name,
+			last_name: answers.last_name,
+			role_id: answers.roleId,
+			manager_id: answers.managerId,
+		  },
+		  function (err, res) {
+			if (err) throw err;
+
+  
+			firstPrompt();
+		  });
+	  });
+}
+
+// Add Role
+
+function addRole() {
+	inquirer
+	  .prompt([
+		  {
+			  type: "input",
+			  name: "roleName",
+			  message: "What is the Role you would like to add?"
+		  },
+		  {
+			  type: "input",
+			  name: "roleSalary",
+			  message: "What is the salary for this role?"
+		  }
+		])
+		.then(function (answers){
+			let roleName = answers.roleName;
+			let roleSalary = answers.roleSalary;
+			let query = `INSERT INTO role (title, salary)
+			VALUES (${roleName}, ${roleSalary});`
+
+			connection.query(query, function(err, res) {
+				if(err) throw err;
+				console.table(res);
+			})
+			firstPrompt();
+		})
+};
+
+//Add Department
+function addDepartment() {
+	inquirer
+	  .prompt([
+		  {
+			  type: "input",
+			  name: "roleName",
+			  message: "What is the Role you would like to add?"
+		  },
+		  {
+			  type: "input",
+			  name: "roleSalary",
+			  message: "What is the salary for this role?"
+		  }
+		])
+		.then(function (answers){
+			let roleName = answers.roleName;
+			let roleSalary = answers.roleSalary;
+			let query = `INSERT INTO role (title, salary)
+			VALUES (${roleName}, ${roleSalary});`
+
+			connection.query(query, function(err, res) {
+				if(err) throw err;
+				console.table(res);
+			})
+			firstPrompt();
+		})
+}
+
+
 firstPrompt()
