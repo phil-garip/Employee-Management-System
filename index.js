@@ -2,12 +2,6 @@ const inquirer = require("inquirer");
 const table = require("console.table");
 const connection = require("./config/connection");
 
-
-connection.connect(function (err) {
-	if (err) throw err;
-	firstPrompt();
-})
-
 function firstPrompt() {
   inquirer
 	.prompt({
@@ -73,9 +67,10 @@ function viewEmployees() {
 
 		console.table(res);
 	})
-	firstPrompt()
+	firstPrompt();
 }
 
+// View Roles
 function viewRoles () {
 	console.log("Roles\n");
 
@@ -85,9 +80,20 @@ function viewRoles () {
 		if (err) throw err;
 		console.table(res);
 	})
-	firstPrompt()
+	firstPrompt();
 }
 
+// View Departments
 function viewDepartments() {
 	console.log("Departments\n");
+
+	let query = `SELECT name FROM department`
+
+	connection.query(query, function(err, res) {
+		if(err) throw err;
+		console.table(res);
+	})
+	firstPrompt();
 }
+
+firstPrompt()
