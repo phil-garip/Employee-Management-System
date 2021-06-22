@@ -265,8 +265,27 @@ function employeeRolePrompt(employeeChoices, roleChoices) {
 			  name: "employeeId",
 			  message: "Which employee would you like to update?",
 			  choices: employeeChoices
+		  },
+		  {
+			  type: "list",
+			  name: "roleId",
+			  message: "Which role would you like to update your employee with?",
+			  choices: roleChoices
 		  }
 	  ])
+	  .then(function (answer) {
+		  let query = `UPDATE employee SET role_id = ? WHERE id =?`
+		  connection.query(query,
+			[ answer.roleId,
+			answer.employeeId
+		],
+		function (err, res) {
+			if (err) throw err;
+
+			console.table(res);
+			firstPrompt()
+		});
+	  });
 }
 
 firstPrompt()
