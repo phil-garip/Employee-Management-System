@@ -193,23 +193,16 @@ function addRole() {
 //Add Department
 function addDepartment() {
 	inquirer
-	  .prompt([
+	  .prompt(
 		  {
 			  type: "input",
-			  name: "roleName",
-			  message: "What is the Role you would like to add?"
+			  name: "deptName",
+			  message: "What is the Department you would like to add?"
 		  },
-		  {
-			  type: "input",
-			  name: "roleSalary",
-			  message: "What is the salary for this role?"
-		  }
-		])
+		)
 		.then(function (answers){
-			let roleName = answers.roleName;
-			let roleSalary = answers.roleSalary;
-			let query = `INSERT INTO role (title, salary)
-			VALUES (${roleName}, ${roleSalary});`
+			let query = `INSERT INTO department (name)
+			VALUES (${answers.deptName});`
 
 			connection.query(query, function(err, res) {
 				if(err) throw err;
