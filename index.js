@@ -25,6 +25,35 @@ function firstPrompt() {
 			"Exit"
 		]
 	})
-	.then( )
+	.then(function ({ action }) {
+		switch (action) {
+			case "View Employees":
+				viewEmployees();
+				break;
+			case "View Roles":
+				viewRoles();
+				break;
+			case "View Departments":
+				viewDepartments();
+				break;
+			case "Add Employee":
+				addEmployee();
+				break;
+			case "Add Role":
+				addRole();
+				break;
+			case "Add Department":
+				addDepartment();
+				break;
+			case "Update Employee Role":
+				updateRole();
+				break;
+			case "Exit":
+				connection.end();
+				break;
+		}
+	});
 
 }
+
+//View Employees
