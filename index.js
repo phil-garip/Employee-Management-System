@@ -153,7 +153,7 @@ function addEmployee() {
 		  },
 		  function (err, res) {
 			if (err) throw err;
-
+			viewEmployees()
   
 			firstPrompt();
 		  });
@@ -184,7 +184,7 @@ function addRole() {
 
 			connection.query(query, function(err, res) {
 				if(err) throw err;
-				console.table(res);
+				viewRoles();
 			})
 			firstPrompt();
 		})
@@ -202,15 +202,19 @@ function addDepartment() {
 		)
 		.then(function (answers){
 			let query = `INSERT INTO department (name)
-			VALUES (${answers.deptName});`
+			VALUES ("${answers.deptName}");`
 
 			connection.query(query, function(err, res) {
 				if(err) throw err;
-				console.table(res);
+				viewDepartments();
 			})
 			firstPrompt();
 		})
 }
+
+//Update Employees
+
+
 
 
 firstPrompt()
