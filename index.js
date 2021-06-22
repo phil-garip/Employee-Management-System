@@ -57,3 +57,37 @@ function firstPrompt() {
 }
 
 //View Employees
+function viewEmployees() {
+	console.log("Employees\n");
+
+	let query = 
+		`SELECT e.id, e.first_name, e.last_name, r.title, d.name AS department, r.salary
+		FROM employee e
+		LEFT JOIN role r 
+			ON e.role_id = r.id
+		LEFT JOIN department d
+		ON d.id = r.department_id;`
+	
+	connection.query(query, function (err ,res) {
+		if (err) throw err;
+
+		console.table(res);
+	})
+	firstPrompt()
+}
+
+function viewRoles () {
+	console.log("Roles\n");
+
+	let query = `SELECT title salary FROM role`
+	
+	connection.query(query, function (err, res) {
+		if (err) throw err;
+		console.table(res);
+	})
+	firstPrompt()
+}
+
+function viewDepartments() {
+	console.log("Departments\n");
+}
