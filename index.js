@@ -213,8 +213,60 @@ function addDepartment() {
 }
 
 //Update Employees
+function updateRole() {
+	employeeArray();
+}
 
+function employeeArray() {
+	let query = `SELECT e.id, e.first_name, e.last_name, d.name AS department, r.salary
+	FROM employee e
+	JOIN role r
+		ON e.role_id = r.id
+	JOIN department d
+	ON d.id = r.department_id`
 
+	connection.query(query, function (err, res) {
+		if (err) throw err;
 
+		const employeeChoices = res.map(({ id, first_name, last_name }) => ({
+			value: id, name: `${first_name} ${last_name}`
+		}))
+
+		console.table(res);
+		
+		roleArray(employeeChoices);
+	});
+}
+
+function roleArray(employeeChoices) {
+	let query = 
+		`SELECT r.id, r.title, r.salary
+		FROM role r`
+		let roleChoices;
+	
+	connection.query(query, function (err, res) {
+		if (err) throw err;
+
+		roleChoices = res.map(({ id, title, salary }) => ({
+			value: id, title: `${title}`, salary: `${salary}`
+		}));
+
+		console.table(res);
+
+		employeeRolePrompt(employeeChoices, roleChoices);
+	});
+}
+
+function employeeRolePrompt(employeeChoices, roleChoices) {
+	inquirer
+	  .prompt([
+		  {
+			  type: "list",
+			  name: "employeeId",
+			  message: "Which employee would you like to update?",
+			  choices: employeeChoices
+		  }
+	  ])
+}
 
 firstPrompt()
